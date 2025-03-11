@@ -1,5 +1,8 @@
 from datetime import datetime, timedelta
 import os
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
 
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')

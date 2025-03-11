@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Day Counter - Result</title>
+</head>
+<body>
+    <h1>Day Counter Result</h1>
+    {% if error %}
+        <p style="color: red;">Error: {{ error }}</p>
+    {% else %}
+        <p>Starting Date: <strong>{{ start_date }}</strong></p>
+        <p>Number of {{ day_label }} days to count: <strong>{{ days }}</strong></p>
+        <p>Resulting Date: <strong>{{ result_date }}</strong></p>
+    {% endif %}
+
+    <br><br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
