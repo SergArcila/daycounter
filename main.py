@@ -103,7 +103,7 @@ def main():
         
         # If we got a valid result, print it
         if result:
-            print(f"\n{days} days from today (counting today as day 1) is {result.strftime('%m-%d-%Y')}")
+            print(f"\n{days} days from today is {result.strftime('%m-%d-%Y')}")
         
         input("Press Enter to continue...")
         main()  # Re-run main if you want an endless loop
@@ -122,7 +122,7 @@ def main():
         
         days, result = Calculate(date_obj)
         if result:
-            print(f"\n{days} days from {date_input} (counting that day as day 1) is {result.strftime('%m-%d-%Y')}")
+            print(f"\n{days} days from {date_input}  is {result.strftime('%m-%d-%Y')}")
         
         input("Press Enter to continue...")
         main()
