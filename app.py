@@ -112,7 +112,8 @@ def calculate():
                            day_label=day_label, 
                            result_date=result_str)
 
+import os
+
 if __name__ == "__main__":
-    # Run Flask app in debug mode for local development
-    # Once you deploy, you can switch off debug mode
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)

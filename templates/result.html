@@ -1,20 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Day Counter - Result</title>
+  <meta charset="utf-8" />
+  <title>Day Counter - Result</title>
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
 </head>
-<body>
-    <h1>Day Counter Result</h1>
-    {% if error %}
-        <p style="color: red;">Error: {{ error }}</p>
-    {% else %}
-        <p>Starting Date: <strong>{{ start_date }}</strong></p>
-        <p>Number of {{ day_label }} days to count: <strong>{{ days }}</strong></p>
-        <p>Resulting Date: <strong>{{ result_date }}</strong></p>
-    {% endif %}
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Day Counter</a>
+  </div>
+</nav>
 
-    <br><br>
-    <a href="/">Back to Home</a>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title">Results</h2>
+          <hr>
+
+          {% if error %}
+            <div class="alert alert-danger" role="alert">
+              <strong>Error:</strong> {{ error }}
+            </div>
+            <p>Please <a href="/">go back</a> and try again.</p>
+          {% else %}
+            <p><strong>Starting Date:</strong> {{ start_date }}</p>
+            <p><strong>Number of {{ day_label }} days to count:</strong> {{ days }}</p>
+            <p><strong>Resulting Date:</strong> {{ result_date }}</p>
+          {% endif %}
+
+          <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
 </body>
 </html>

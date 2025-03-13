@@ -1,32 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Day Counter</title>
+  <meta charset="utf-8" />
+  <title>Day Counter</title>
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
 </head>
-<body>
-    <h1>Day Counter</h1>
-    <form action="/calculate" method="POST">
-        <label for="start_date">Start Date (MM-DD-YYYY):</label>
-        <input type="text" id="start_date" name="start_date" placeholder="03-10-2025" required>
-        <br><br>
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Day Counter</a>
+  </div>
+</nav>
 
-        <label>Type of Days:</label>
-        <br>
-        <input type="radio" id="business" name="day_type" value="business" required>
-        <label for="business">Business (Mon-Fri)</label><br>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title">Calculate Days</h2>
+          <p class="card-text">
+            Enter a start date, pick the type of days to count, and specify how many days 
+            you want to move forward.
+          </p>
+          <hr>
+          <form action="/calculate" method="POST">
+            <button type="button" class="btn btn-outline-secondary"  onclick="fillToday()" >Todays date</button>
+            <div class="mb-3">
+              <label for="start_date" class="form-label">Start Date (MM-DD-YYYY):</label>
+              <input
+                type="text"
+                class="form-control"
+                id="start_date"
+                name="start_date"
+                placeholder="03-10-2025"
+                required
+              >
+            </div>
 
-        <input type="radio" id="weekend" name="day_type" value="weekend">
-        <label for="weekend">Weekend (Sat-Sun)</label><br>
+            <div class="mb-3">
+              <label class="form-label">Type of Days:</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="business"
+                  name="day_type"
+                  value="business"
+                  required
+                >
+                <label class="form-check-label" for="business">Business (Mon-Fri)</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="weekend"
+                  name="day_type"
+                  value="weekend"
+                >
+                <label class="form-check-label" for="weekend">Weekend (Sat-Sun)</label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="all"
+                  name="day_type"
+                  value="all"
+                >
+                <label class="form-check-label" for="all">All Days</label>
+              </div>
+            </div>
 
-        <input type="radio" id="all" name="day_type" value="all">
-        <label for="all">All Days</label><br><br>
+            <div class="mb-3">
+              <label for="days_count" class="form-label">Number of Days to Count:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="days_count"
+                name="days_count"
+                placeholder="15"
+                required
+              >
+            </div>
 
-        <label for="days_count">Number of Days to Count:</label>
-        <input type="number" id="days_count" name="days_count" placeholder="15" required>
-        <br><br>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <input type="submit" value="Calculate">
-    </form>
+<script>
+    function fillToday() {
+      const today = new Date();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      const year = today.getFullYear();
+      const formattedDate = `${month}-${day}-${year}`;
+      document.getElementById("start_date").value = formattedDate;
+    }
+  </script>
+
+<!-- Bootstrap JS (optional) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
 </body>
 </html>
